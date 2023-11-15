@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-first-app';
+  showMessages = true;
+  message = 'Hello world!!!!';
+
+  toggleMessages() {
+    this.showMessages = !this.showMessages;
+  }
 }
