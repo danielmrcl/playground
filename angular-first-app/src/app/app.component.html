@@ -1,10 +1,3 @@
 <div class="content">
-  <!-- Iterpolation >> adiciona o valor do campo title no HTML. -->
   <h2>{{ title }}</h2>
-  <!-- Event Binding >> aciona uma função ao clicar no botão. -->
-  <button (click)="toggleMessages()">Toggle Message</button>
-  <!-- Property Binding >> esconde a tag da tela, mas continua no HTML. -->
-  <p [hidden]="!showMessages">{{ message }}</p>
-  <!-- Directive >> só adiciona a tag no HTML se o valor do campo for verdadeiro. -->
-  <p *ngIf="showMessages">App is running! :)</p>
 </div>

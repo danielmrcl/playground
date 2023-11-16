@@ -15,13 +15,7 @@ describe('AppComponent', () => {
   it(`should have as title 'angular-first-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-first-app');
+    expect(app.title).toEqual('homes');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-first-app app is running!');
-  });
 });
