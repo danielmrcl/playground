@@ -15,12 +15,14 @@ import { HousingService } from '../housing.service';
   ]
 })
 export class HomeComponent {
-  housingLocations: HousingLocation[];
+  housingLocations: HousingLocation[] = [];
   filteredLocations: HousingLocation[] = [];
 
   constructor(housingService: HousingService) {
-    this.housingLocations = housingService.getAllHousingLocations();
-    this.filteredLocations = this.housingLocations;
+    housingService.getAllHousingLocations().then(locations => {
+      this.housingLocations = locations;
+      this.filteredLocations = locations;
+    });
   }
 
   filterSearch(searchValue: string) {

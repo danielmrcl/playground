@@ -111,12 +111,14 @@ export class HousingService {
     }
   ];
 
-  getAllHousingLocations(): HousingLocation[] {
-    return this.housingLocations;
+  url = 'http://localhost:3000/locations';
+
+  async getAllHousingLocations(): Promise<HousingLocation[]> {
+    return (await fetch(this.url)).json() ?? [];
   }
 
-  getHousingLocationById(id: number): HousingLocation | undefined {
-    return this.housingLocations.find(housingLocation => housingLocation.id === id);
+  async getHousingLocationById(id: number): Promise<HousingLocation | undefined> {
+    return (await fetch(`${this.url}/${id}`)).json();
   }
 
   submitApplication(firstName: string, lastName: string, email: string) {
