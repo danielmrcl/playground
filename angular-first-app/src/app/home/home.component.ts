@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
 import { HousingLocation } from '../housing-location';
-import { NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HousingService } from '../housing.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { HousingService } from '../housing.service';
   styleUrls: ['./home.component.scss'],
   imports: [
     HousingLocationComponent,
-    NgFor
+    CommonModule
   ]
 })
 export class HomeComponent {
