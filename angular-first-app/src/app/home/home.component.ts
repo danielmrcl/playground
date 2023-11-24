@@ -16,8 +16,16 @@ import { HousingService } from '../housing.service';
 })
 export class HomeComponent {
   housingLocations: HousingLocation[];
+  filteredLocations: HousingLocation[] = [];
 
   constructor(housingService: HousingService) {
     this.housingLocations = housingService.getAllHousingLocations();
+    this.filteredLocations = this.housingLocations;
+  }
+
+  filterSearch(searchValue: string) {
+    const formatString = (str: string) => str.toLowerCase().replaceAll(' ', '');
+    this.filteredLocations = this.housingLocations
+      .filter(location => formatString(location.city).includes(formatString(searchValue)));
   }
 }
