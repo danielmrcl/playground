@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -7,7 +8,8 @@ import { HomeComponent } from './home/home.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   imports: [
-    HomeComponent
+    HomeComponent,
+    RouterModule
   ]
 })
 export class AppComponent {
