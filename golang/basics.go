@@ -66,8 +66,21 @@ func main() {
 	integers := [...]int{3: 30, 40, 60}	// [5]int[0, 0, 30, 40, 60}
 	fmt.Println(integers)
 
-	/* SLICES */
-	var s = make([]int, 3)
-	
-	// TODO
+	/* SLICES (sequences) */
+	var slice []int					// nil, len == 0
+	slice = []int{2, 3, 5}			// [2 3 5], len == 3
+	slice = make([]int, 3)			// [0 0 0], len == 3
+	slice[1] = 65					// [0 65 0], len == 3
+	slice = append(slice, 89)		// [0 65 0 89], len == 4
+	slice = slice[1:3]				// [65 0], len == 2
+	fmt.Println("slice:", slice)
+
+	/* MAPS */
+	var mapp map[string]int			// nil
+	mapp = make(map[string]int)		// map[]
+	mapp = map[string]int{"two":2}	// map[two: 2]
+	mapp["one"] = 1					// map[one:1 two:2]
+	delete(mapp, "two")				// map[one:1]
+	clear(mapp)						// map[]
+	fmt.Println("mapp:", mapp)
 }
