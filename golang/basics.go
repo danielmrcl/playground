@@ -14,6 +14,7 @@ func main() {
 	maps_examples()
 	range_examples()
 	functions_examples()
+	pointers_examples()
 }
 
 /** Print VALUES examples */
@@ -163,4 +164,22 @@ func functions_examples() {
 		return a + b
 	}
 	fmt.Println(sum(3, 4)) // sum is the anonymous func, not the global.
+}
+
+/** POINTERS examples */
+func pointers_examples() {
+	zeroval := func(ival int) { // passed by value
+		ival = 0 // change just ival
+	}
+	zeroptr := func(iptr *int) { // passed by memory location
+		*iptr = 0 // change value in memory
+	}
+
+	i := 1
+	fmt.Println("initial:", i) // 1
+	zeroval(i)
+	fmt.Println("zeroval:", i) // 1
+	zeroptr(&i)
+	fmt.Println("zeroptr:", i) // 0
+    fmt.Println("pointer:", &i) // 0xc000112038
 }
