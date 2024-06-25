@@ -253,3 +253,34 @@ func interfaces_examples() {
 	}
 	measure(rect{4.5, 10})
 }
+
+/**
+ * Enums: Go doesn’t have an enum type as a distinct language feature, but enums are simple to implement using existing language idioms. (type + const + map/switch)
+ */
+type Status uint8
+const (
+    StatusSuccess = iota // StatusSuccess = 0
+    StatusError          // StatusError   = 1
+)
+func (s Status) String() string {
+    switch s {
+	case StatusSuccess:
+		return "sucesso"
+	case StatusError:
+		return "error"
+	default:
+		return "" // TODO: return error
+	}
+}
+// Example usage
+type operation struct {
+	code uint16
+	status Status
+}
+func (o operation) String() string {
+	return fmt.Sprintf("{%d %s}", o.code, o.status.String())
+}
+func enums_examples() {
+	fmt.Println("(enum) status:", operation{23, StatusSuccess})
+	fmt.Println("(enum) status:", operation{24, StatusError})
+}
