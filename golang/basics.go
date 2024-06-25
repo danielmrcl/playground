@@ -233,3 +233,23 @@ func structs_examples() {
 	}
 	fmt.Println("person3:", p3)
 }
+
+/**
+ * Interfaces: named collections of method signatures.
+ */
+type geometry interface {
+	area() float64
+}
+type rect struct {
+	width, height float64
+}
+func (r rect) area() float64 {
+	return r.width * r.height
+}
+func interfaces_examples() {
+	measure := func(g geometry) {
+		fmt.Println("geometry:", g)
+		fmt.Println("geometry area:", g.area())
+	}
+	measure(rect{4.5, 10})
+}
