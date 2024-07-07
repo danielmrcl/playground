@@ -1,3 +1,4 @@
+// Go By Examples
 package main
 
 import (
@@ -21,8 +22,8 @@ func main() {
 	strings_examples()
 }
 
-/** Print VALUES examples */
-func values_examples() {
+// Print VALUES examples
+func ValuesExamples() {
 	fmt.Println("Hello", "World!")	// Hello World!
 	fmt.Println("1 + 1 =", 1 + 1)	// 1 + 1 = 2
 	fmt.Println("7.0 / 3.0 =", 7.0 / 3.0)
@@ -30,8 +31,8 @@ func values_examples() {
 	fmt.Println(!false)				// true
 }
 
-/** VARIABLES examples */
-func variables_examples() {
+// VARIABLES examples
+func VariablesExamples() {
 	var a = 0		// var a int = 0
 	var b int = 0	// var b int = 0
 	c := 0			// var c int = 0
@@ -41,14 +42,14 @@ func variables_examples() {
 	fmt.Println("c:", c)
 }
 
-/** CONSTANTS examples */
-func constants_examples() {
+// CONSTANTS examples
+func ConstantsExamples() {
 	const d = 3e10	// const d int = 30000000000
 	fmt.Println("d:", d)
 }
 
-/** LOOPS exmaples */
-func loops_examples() {
+// LOOPS exmaples
+func LoopsExamples() {
 	i := 1
 	for i <= 3 {
 		fmt.Println("i:", i)
@@ -61,8 +62,8 @@ func loops_examples() {
 	}
 }
 
-/** CONDITIONS examples */
-func conditions_examples() {
+// CONDITIONS examples
+func ConditionsExamples() {
 	if n := 1 + 1; n == 2 {
 		fmt.Println("Right")
 	} else if n < 2 || n > 2 {
@@ -70,8 +71,8 @@ func conditions_examples() {
 	}
 }
 
-/** SWITCH examples */
-func switch_examples() {
+// SWITCH examples
+func SwitchExamples() {
 	i := 1
 	switch i {
 	case 1:
@@ -93,14 +94,14 @@ func switch_examples() {
 	//}
 }
 
-/** ARRAYS examples */
-func arrays_examples() {
+// ARRAYS examples
+func ArraysExamples() {
 	integers := [...]int{3: 30, 40, 60}	// [5]int[0, 0, 30, 40, 60}
 	fmt.Println(integers)
 }
 
-/** SLICES (sequences) */
-func slices_examples() {
+// SLICES (sequences)
+func SlicesExamples() {
 	var slice []int					// nil, len == 0
 	slice = []int{2, 3, 5}			// [2 3 5], len == 3
 	slice = make([]int, 3)			// [0 0 0], len == 3
@@ -110,8 +111,8 @@ func slices_examples() {
 	fmt.Println("slice:", slice)
 }
 
-/** MAPs examples */
-func maps_examples() {
+// MAPs examples
+func MapsExamples() {
 	var mapp map[string]int			// nil
 	mapp = make(map[string]int)		// map[]
 	mapp = map[string]int{"two":2}	// map[two: 2]
@@ -121,8 +122,8 @@ func maps_examples() {
 	fmt.Println("mapp:", mapp)
 }
 
-/** Range iterates over elements in a variety of data structures. */
-func range_examples() {
+// Range iterates over elements in a variety of data structures.
+func RangeExamples() {
 	slice := []int{5, 8, 1, 10}
 	var sum int // int 0
 	for i, v := range slice {
@@ -140,7 +141,6 @@ func range_examples() {
 	}
 }
 
-/** FUNCTIONS examples */
 func sum(a int, b int) int {
 	return a + b
 }
@@ -154,7 +154,9 @@ func total(n ...int) int {
 	}
 	return t
 }
-func functions_examples() {
+
+// FUNCTIONS examples
+func FunctionsExamples() {
 	fmt.Println("func:", sum(5, 6)) // 11
 	i, v := vals()
 	fmt.Printf("func: %d %s\n", i, v) // 5 value
@@ -170,8 +172,8 @@ func functions_examples() {
 	fmt.Println(sum(3, 4)) // sum is the anonymous func, not the global.
 }
 
-/** POINTERS examples */
-func pointers_examples() {
+// POINTERS examples
+func PointersExamples() {
 	zeroval := func(ival int) { // passed by value
 		ival = 0 // change just ival
 	}
@@ -188,8 +190,8 @@ func pointers_examples() {
     fmt.Println("pointer:", &i) // 0xc000112038
 }
 
-/** Strings and Runes examples */
-func strings_examples() {
+// Strings and Runes examples
+func StringsExamples() {
 	s := "Olá Mundo!"
 	runeVal, width := utf8.DecodeRuneInString(s[2:]) // rune of 'á' char
 	fmt.Println("string char:", s[2:2+width]) // index 2 to 4. (two bytes to rune)
@@ -201,10 +203,6 @@ func strings_examples() {
 	}
 }
 
-/**
- * Structs: typed collections of fields.
- * Receiver function: method that belongs to a single non-variadic type.
- */
 type person struct {
 	name string
 	age uint8
@@ -215,7 +213,10 @@ func (p person) greetig() {
 func (p *person) incrementAge() {
 	p.age++
 }
-func structs_examples() {
+
+// Structs: typed collections of fields.
+// Receiver function: method that belongs to a single non-variadic type.
+func StructsExamples() {
 	p1 := person{name: "João", age: 54}
 	p2 := &p1
 	p2.age = 21
@@ -234,9 +235,6 @@ func structs_examples() {
 	fmt.Println("person3:", p3)
 }
 
-/**
- * Interfaces: named collections of method signatures.
- */
 type geometry interface {
 	area() float64
 }
@@ -246,7 +244,9 @@ type rect struct {
 func (r rect) area() float64 {
 	return r.width * r.height
 }
-func interfaces_examples() {
+
+// Interfaces: named collections of method signatures.
+func InterfacesExamples() {
 	measure := func(g geometry) {
 		fmt.Println("geometry:", g)
 		fmt.Println("geometry area:", g.area())
@@ -254,9 +254,6 @@ func interfaces_examples() {
 	measure(rect{4.5, 10})
 }
 
-/**
- * Enums: Go doesn’t have an enum type as a distinct language feature, but enums are simple to implement using existing language idioms. (type + const + map/switch)
- */
 type Status uint8
 const (
     StatusSuccess = iota // StatusSuccess = 0
@@ -272,7 +269,6 @@ func (s Status) String() string {
 		return "" // TODO: return error
 	}
 }
-// Example usage
 type operation struct {
 	code uint16
 	status Status
@@ -280,22 +276,28 @@ type operation struct {
 func (o operation) String() string {
 	return fmt.Sprintf("{%d %s}", o.code, o.status.String())
 }
-func enums_examples() {
+
+// Enums: Go doesn’t have an enum type as a distinct
+// language feature, but enums are simple to implement
+// using existing language idioms.
+// (type + const + map/switch)
+func EnumsExamples() {
 	fmt.Println("(enum) status:", operation{23, StatusSuccess})
 	fmt.Println("(enum) status:", operation{24, StatusError})
 }
 
-/**
- * Struct Embedding: composition of types.
- */
 type update_action struct {
 	operation
 	new_value string
 }
+
 func (ua update_action) String() string {
 	return fmt.Sprintf("{%d %s %s}", ua.code, ua.status, ua.new_value) // {1 sucesso Hello!}
 }
-func struct_embedding_example() {
+
+// Struct Embedding
+// composition of types.
+func StructEmbeddingExample() {
 	ua := update_action{
 		operation: operation{
 			code: 1,
