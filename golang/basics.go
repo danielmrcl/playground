@@ -284,3 +284,25 @@ func enums_examples() {
 	fmt.Println("(enum) status:", operation{23, StatusSuccess})
 	fmt.Println("(enum) status:", operation{24, StatusError})
 }
+
+/**
+ * Struct Embedding: composition of types.
+ */
+type update_action struct {
+	operation
+	new_value string
+}
+func (ua update_action) String() string {
+	return fmt.Sprintf("{%d %s %s}", ua.code, ua.status, ua.new_value) // {1 sucesso Hello!}
+}
+func struct_embedding_example() {
+	ua := update_action{
+		operation: operation{
+			code: 1,
+			status: StatusSuccess,
+		},
+		new_value: "Hello!",
+	}
+
+	fmt.Printf("(struct embedding) update_action: %s\n", ua)
+}
