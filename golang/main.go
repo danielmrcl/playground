@@ -24,5 +24,6 @@ func main() {
 	e.ConditionsExamples()
 	e.EnumsExamples()
 	e.GenericsExamples()
+	e.ErrorsExamples()
 }
 

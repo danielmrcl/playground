@@ -7,22 +7,26 @@ const (
     StatusSuccess = iota // StatusSuccess = 0
     StatusError          // StatusError   = 1
 )
-func (s Status) String() string {
+func (s Status) String() (string, error) {
     switch s {
 	case StatusSuccess:
-		return "sucesso"
+		return "sucesso", nil
 	case StatusError:
-		return "error"
+		return "error", nil
 	default:
-		return "" // TODO: return error
+		return "", fmt.Errorf("invalid type")
 	}
 }
 type operation struct {
 	code uint16
 	status Status
 }
-func (o operation) String() string {
-	return fmt.Sprintf("{%d %s}", o.code, o.status.String())
+func (o operation) String() (string, error) {
+	if status, err := o.status.String(); err == nil {
+		return fmt.Sprintf("{%d %s}", o.code, status), nil
+	} else {
+		return "", fmt.Errorf("status cannot be converted to string: %w", err)
+	}
 }
 
 // Enums: Go doesn’t have an enum type as a distinct
