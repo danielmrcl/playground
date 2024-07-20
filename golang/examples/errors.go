@@ -13,6 +13,9 @@ func (e operationStringError) Error() string {
 	return fmt.Sprintf("%s: %s", e.message, e.cause)
 }
 
+// Examples of manipulating errors.
+// It’s possible to use custom types as errors by
+// implementing the Error() method on them.
 func ErrorsExamples() {
 	op := operation{
 		code: 10,
