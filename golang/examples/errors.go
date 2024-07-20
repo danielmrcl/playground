@@ -5,6 +5,14 @@ import (
 	"fmt"
 )
 
+type operationStringError struct {
+	message string
+	cause error
+}
+func (e operationStringError) Error() string {
+	return fmt.Sprintf("%s: %s", e.message, e.cause)
+}
+
 func ErrorsExamples() {
 	op := operation{
 		code: 10,
@@ -20,7 +28,12 @@ func (op operation) StringOrPanic() string {
 		if errors.Is(err, errors.ErrUnsupported) {
 			panic(fmt.Errorf("error not supported: %w", err))
 		}
-		panic(err)					// panic: status cannot be converted to string: invalid type
+		var customErr error = operationStringError{
+			message: "operation cannot be converted to string",
+			cause: err,
+		}
+		panic(customErr)			// panic: operation cannot be converted to string: status cannot be converted to string: invalid type
+		//panic(err)				// panic: status cannot be converted to string: invalid type
 		//panic(errors.Unwrap(err))	// panic: invalid type
 	}
 	
