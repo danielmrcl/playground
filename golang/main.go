@@ -25,5 +25,6 @@ func main() {
 	e.EnumsExamples()
 	e.GenericsExamples()
 	e.ErrorsExamples()
+	e.GoroutinesExamples()
 }
 
