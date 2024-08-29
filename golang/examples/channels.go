@@ -7,6 +7,8 @@ import (
 
 // Channels: are pipes that connect concurrent goroutines.
 func ChannelsExamples() {
+	var log = logger{"channels"}.log
+
 	// Creating one channel of string messages.
 	messages := make(chan string)
 
@@ -28,8 +30,4 @@ func ChannelsExamples() {
 	log("Message received: " + <-messages)
 
 	log("Done!")
-}
-
-func log(message string) {
-	fmt.Printf("(channels) %s\n", message)
 }
