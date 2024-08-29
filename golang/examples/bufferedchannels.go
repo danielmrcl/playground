@@ -15,18 +15,22 @@ func BufferedChannelsExamples() {
 
 	for i := 0; i < 3; i++ {
 		// Init an goroutine with anonymous function
-		go func() {
+		// Channel as write-only (chan<-)
+		go func(msg chan<- string) {
 			// Do some async shit
 			time.Sleep(1 * time.Second)
 
-			messages <- fmt.Sprintf("%d End of Function", i)
-		}()
+			msg <- fmt.Sprintf("%d End of Function", i)
+		}(messages)
 	}
 
-	// Get the value in the channel
-	log("Message received: " + <-messages)
-	log("Message received: " + <-messages)
-	log("Message received: " + <-messages)
+	// Channel as read-only (<-chan)
+	func(msg <-chan string) {
+		// Get the value in the channel
+		log("Message received: " + <-msg)
+		log("Message received: " + <-msg)
+		log("Message received: " + <-msg)
+	}(messages)
 
 	log("Done!")
 }
